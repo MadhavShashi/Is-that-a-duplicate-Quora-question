@@ -23,7 +23,7 @@ What could be a perfect way to utilize unfortunate lockdown period? The only sol
 Suppose we have a fairly large data set of question-pairs that has been labeled (by humans) as **“duplicate” or “not duplicate.”** We could then use natural language processing *(NLP)* techniques to extract the difference in meaning or intent of each question-pair, use machine learning (ML) to learn from the human-labeled data, and predict whether a new pair of questions is duplicate or not.
 
 ## Which type of ML Problem is this?
-![#c5f015](https://via.placeholder.com/17/c5f015/000000?text=+) It is a **binary classification problem**, for a given pair of questions we need to predict if they are *duplicate or not.*   
+![#FF5733](https://via.placeholder.com/7x24/FF5733/000000?text=+) It is a **binary classification problem**, for a given pair of questions we need to predict if they are *duplicate or not.*   
 
 ## What is the best performance metric for this Problem?
 - **log-loss:**     https://www.kaggle.com/wiki/LogarithmicLoss
@@ -50,12 +50,12 @@ Suppose we have a fairly large data set of question-pairs that has been labeled 
 | 1 | 3 | 4 | What is the story of Kohinoor (Koh-i-Noor) Diamond? | What would happen if the Indian government stole the Kohinoor (Koh-i-Noor) diamond back? | 0 |
 
 ## Train and Test ratio
-![#c5f015](https://via.placeholder.com/17/c5f015/000000?text=+) We build train and test by *randomly splitting* in the ratio of **60:40** or **70:30** whatever we choose as we have sufficient points to work with.
+![#FF5733](https://via.placeholder.com/7x24/FF5733/000000?text=+) We build train and test by *randomly splitting* in the ratio of **60:40** or **70:30** whatever we choose as we have sufficient points to work with.
 
 ## Agenda
-### 1.  Analyzing the Data (EDA)
-
-
+1.  **Analyzing the Data (EDA)**
+### Analyzing the Data (EDA)
+#### Analyzing the Data (EDA)
 
 ```python
 fuzz.ratio("YANKEES", "NEW YORK YANKEES") ⇒ 60
