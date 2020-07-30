@@ -33,7 +33,7 @@ Suppose we have a fairly large data set of question-pairs that has been labeled 
 ## Business Objectives and Constraints
 1.  **The cost of a mis-classification can be very high.**
 2.  **You would want a probability of a pair of questions to be duplicates so that you can choose any threshold of choice.**
-    * **Qsn:** *Why we choose any threshold of choice??*<p>**Ans:** *This mean, see we want **“p (q1 ≈ q2)“** and here probability lies b/w **“ 0 to 1”**, so here we can choose some threshold which confirm me* **“ q1 ≈ q2 ”**.</p>
+    * ```diff - **Qsn:** *Why we choose any threshold of choice??*<p>**Ans:** *This mean, see we want **“p (q1 ≈ q2)“** and here probability lies b/w **“ 0 to 1”**, so here we can choose some threshold which confirm me* **“ q1 ≈ q2 ”**.</p>```
     * **Example**: If we choose threshold **0.95**, this mean **p(q1 ≈ q2)** when **p>0.95**.
     * **Benefit of choosing threshold here**: If suppose we set threshold >0.95 and Human read the answer and they told this is the wrong answer for this question, then we can change the threshold. 
 3.	**No strict latency concerns.**
