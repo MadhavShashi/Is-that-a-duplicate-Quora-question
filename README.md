@@ -28,14 +28,14 @@ It is a **binary classification problem**, for a given pair of questions we need
 ## What is the best performance metric for this Problem?
 - **log-loss:**     https://www.kaggle.com/wiki/LogarithmicLoss
    * **Qns:** *Why log-loss is right Metric for this??*
-   * **Ans:** This is a “Binary class classification problem” this doesn’t mean we want output as “0” or “1”. we want “p (q1 ≈ q2)“ and here probability lies b/w “ 0 to 1”, and when we have probability value and predicting for binary class classification problem the log-loss is one of the best metric.
+   * **Ans:** This is a *“Binary class classification problem”* this doesn’t mean we want output as “**0**” or “**1**”. we want “ **p (q1 ≈ q2)** “ and here probability lies b/w “**0 to 1**”, and when we have probability value and predicting for binary class classification problem *the log-loss is one of the best metric*.
 - **Binary Confusion Matrix**
 
 ## Business Objectives and Constraints
 1.  **The cost of a mis-classification can be very high.**
 2.  **You would want a probability of a pair of questions to be duplicates so that you can choose any threshold of choice.**
-    * **Qsn:** *Why we choose any threshold of choice??* 
-    * **Ans:** This mean, see we want **“p (q1 ≈ q2)“** and here probability lies b/w **“ 0 to 1”**, so here we can choose some threshold which confirm me **“ q1 ≈ q2 ”**.
+    * **Qsn:** *Why we choose any threshold of choice??* <p>**Ans:** This mean, see we want **“p (q1 ≈ q2)“** and here probability lies b/w **“ 0 to 1”**, so here we can choose some threshold which confirm me **“ q1 ≈ q2 ”**.</p>
+    
     * **Example**: If we choose threshold **0.95**, this mean **p(q1 ≈ q2)** when **p>0.95**.
     * **Benefit of choosing threshold here**: If suppose we set threshold >0.95 and Human read the answer and they told this is the wrong answer for this question, then we can change the threshold. 
 3.	**No strict latency concerns.**
