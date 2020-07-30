@@ -27,26 +27,35 @@ It is a **binary classification problem**, for a given pair of questions we need
 
 ## What is the best performance metric for this Problem?
 - **log-loss:**     https://www.kaggle.com/wiki/LogarithmicLoss
-   * **Qns:** *Why log-loss is right Metric for this??*
-   * **Ans:** This is a *“Binary class classification problem”* this doesn’t mean we want output as “**0**” or “**1**”. we want “ **p (q1 ≈ q2)** “ and here probability lies b/w “**0 to 1**”, and when we have probability value and predicting for binary class classification problem *the log-loss is one of the best metric*.
+   * **Qns:** *Why log-loss is right Metric for this??*<p>**Ans:** *This is a **“Binary class classification problem”** this doesn’t mean we want output as “**0**” or “**1**”. we want “ **p (q1 ≈ q2)** “ and here probability lies b/w “**0 to 1**”, and when we have probability value and predicting for binary class classification problem* **the log-loss is one of the best metric**.</p>
 - **Binary Confusion Matrix**
 
 ## Business Objectives and Constraints
 1.  **The cost of a mis-classification can be very high.**
 2.  **You would want a probability of a pair of questions to be duplicates so that you can choose any threshold of choice.**
-    * **Qsn:** *Why we choose any threshold of choice??* <p>**Ans:** This mean, see we want **“p (q1 ≈ q2)“** and here probability lies b/w **“ 0 to 1”**, so here we can choose some threshold which confirm me **“ q1 ≈ q2 ”**.</p>
-    
+    * **Qsn:** *Why we choose any threshold of choice??*<p>**Ans:** *This mean, see we want **“p (q1 ≈ q2)“** and here probability lies b/w **“ 0 to 1”**, so here we can choose some threshold which confirm me* **“ q1 ≈ q2 ”**.</p>
     * **Example**: If we choose threshold **0.95**, this mean **p(q1 ≈ q2)** when **p>0.95**.
     * **Benefit of choosing threshold here**: If suppose we set threshold >0.95 and Human read the answer and they told this is the wrong answer for this question, then we can change the threshold. 
 3.	**No strict latency concerns.**
 4.	**Interpretability is partially important.**
 
+## Data Overview
+- Data will be in a file *Train.csv*
+- Train.csv contains *5 columns*: qid1, qid2, question1, question2, is_duplicate
+- Number of rows in Train.csv = **404,290**
+#### Example Data point 
+| id | qid1 | qid2 | question1 | question2 | is_duplicate |
+|--- | --- | --- | ------ | -------- | --- |
+| 0 | 1 | 2 | What is the step by step guide to invest in share market in India? | What is the step by step guide to invest in share market? | 0 |
+| 1 | 3 | 4 | What is the story of Kohinoor (Koh-i-Noor) Diamond? | What would happen if the Indian government stole the Kohinoor (Koh-i-Noor) diamond back? | 0 |
+
+## Train and Test ratio
+We build train and test by *randomly splitting* in the ratio of **60:40** or **70:30** whatever we choose as we have sufficient points to work with.
 
 
 
 
-
-```
+```python
 fuzz.ratio("YANKEES", "NEW YORK YANKEES") ⇒ 60
 fuzz.ratio("NEW YORK METS", "NEW YORK YANKEES") ⇒ 75
 ```
