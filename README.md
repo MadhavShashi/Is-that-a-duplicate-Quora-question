@@ -210,8 +210,46 @@ Suppose we have a fairly large data set of question-pairs that has been labeled 
   
 ### 6. Word2Vec Feature: Distance Feature And Genism’s WmdSimilarity Features (To use WMD, we need some word embeddings first of all. Download the GoogleNews-vectors-negative300.bin.gz pre-trained embeddings (warning: 1.5 GB))
 
+- Word embeddings such as __Word2Vec__ is a key AI method that bridges the human understanding of language to that of a machine and is essential to solving many NLP problems. Here we discuss applications of Word2Vec to Question analysis.
+- __Word2Vec feature:__
+  * Multi-dimensional vector for all the words in any dictionary
+  * Always great insights 
+  * Very popular in natural language processing tasks 
+  * Google news vectors 300d (Pre trained embedding)
+  
+    ```python
+    def sent2vec(s):
+      words = str(s).lower()
+      words = word_tokenize(words)
+      words = [w for w in words if not w in stop_words]
+      words = [w for w in words if w.isalpha()]
+      M = []
+      for w in words:
+          try:
+              M.append(model[w])
+          except:
+              continue
+      M = np.array(M)
+      v = M.sum(axis=0)
+      return v / np.sqrt((v ** 2).sum())
 
+    model = gensim.models.KeyedVectors.load_word2vec_format('Data/GoogleNews-vectors-negative300.bin.gz', binary=True)
+    ```
+ -  __As we performed Word2Vec, now time to create distance feature.__ 
+ -  The similarity between questions can be *computed using word-to-word (pairwise) distances*, which are *weighted with Word2Vec*.
+ -  __Pairwise Distances__ — We can compute the pairwise distances for each pair of words by picking the first word from question 1 and the second word from question 2.
+**Several pairwise distance metrics can be used as features, including *WMD_distance, norm_wmd distance, Cityblock_distance, Bray-Curtis_distance, Cosine_distance, Canberra_distance, Euclidean_distance, Minkowski_distance*, and *jaccard_distance*.**
+    
+    * Reference Link to Understand WMD and Norm_Wmd distance:- https://markroxor.github.io/gensim/static/notebooks/WMD_tutorial.html
+   
 
+### 7. Machine Learning Models:
+#### a.  __Random Model__
+    *    
+#### b.  __Logistic Regression__
+
+#### c.  __Linear SVM__
+#### d.  __XGBoost__
 
 
 
