@@ -244,23 +244,66 @@ Suppose we have a fairly large data set of question-pairs that has been labeled 
    
 
 ### 7. Machine Learning Models:
-#### a.  __Random Model__
-    *    
-#### b.  __Logistic Regression__
+#### ![#86b300](https://via.placeholder.com/5x27/86b300/000000?text=+) a.  __Random Model__
+- 
+ ![p3](https://user-images.githubusercontent.com/49862149/89040798-efff5d00-d361-11ea-8e00-bc8ab56d98b1.png)
+    
+#### ![#86b300](https://via.placeholder.com/5x27/86b300/000000?text=+) b.  __Logistic Regression__
+- __Logistic regression__ is a linear model for classification. In this model, the probabilities describing the possible outcomes of a single trial are modeled using a logistic function. The logistic function is a sigmoid function, *which takes any real input and outputs a value between 0 and 1, and hence is ideal for classification*.<p>When a model learns the training data too closely, it fails to fit new data or predict unseen observations reliably. This condition is called overfitting and is countered, in one of many ways, with ridge (L2) regularization. Ridge regularization penalizes model predictors if they are too big, thus enforcing them to be small. This reduces model variance and avoids overfitting.</p> <p>__Hyperparameter Tuning__:</p><p>Cross-validation is a good technique to tune model parameters like regularization factor and the tolerance for stopping criteria (for determining when to stop training). Here, a validation set is held out from the training data for each run (called fold) while the model is trained on the remaining training data and then evaluated on the validation set. This is repeated for the total number of folds (say five or 10) and the parameters from the fold with the best evaluation score are used as the optimum parameters for the model.</p>
 
-#### c.  __Linear SVM__
-#### d.  __XGBoost__
+#### ![#86b300](https://via.placeholder.com/5x27/86b300/000000?text=+) c.  __Linear SVM__
+- Linear SVM is the newest extremely fast machine learning (data mining) algorithm for solving multiclass classification problems from ultra large data sets that implements an original proprietary version of a cutting plane algorithm for designing a linear support vector machine. LinearSVM is a linearly scalable routine meaning that it creates an SVM model in a CPU time which scales linearly with the size of the training data set.
+- __Features__
+  * Efficiency in dealing with extra-large data sets (say, several millions training data pairs)
+  * Solution of multiclass classification problems with any number of classes
+  * Working with high dimensional data (thousands of features, attributes) in both sparse and dense format
+  * No need for expensive computing resources (personal computer is a standard platform)
 
+#### ![#86b300](https://via.placeholder.com/5x27/86b300/000000?text=+) d.  __XGBoost__
+- Stands for eXtreme Gradient Boosting. Gradient boosting is an approach that predicts the errors made by existing models and adds models until no improvements can be made.
+- There are two main reasons for using XGBoost:
+  * Execution speed
+  * Model performance
+  
+### 8. Results & Conclusion
+- For below table we are comparing all the ML model test log-loss score.
+- I didn’t used total train data to train my algorithms. Because of ram availability constraint in my PC, I sampled some data and Trained my models. below are models and their test log-loss scores. 
+- For below table __Sim Fs__ - *Simple or Basic Feature set*,and __Adv Fs__ – *Advanced Feature set*.
 
-
-
-
-```python
-fuzz.ratio("YANKEES", "NEW YORK YANKEES") ⇒ 60
-fuzz.ratio("NEW YORK METS", "NEW YORK YANKEES") ⇒ 75
-```
-
-| Data Size | Model Name | Features | Tuning | Log Loss |
+| DataSet Size | Model Name | Features | Hyperparameter Tuning | Test Log Loss |
 |---------- | ---------- | -------- | ------ | -------- |
-| ~ 404K | Random | Sim Fs+Adv Fs+TFIDF Weighted W2V | NA | **0.88** |
-| Data Size | Model Name | Features | Tuning | Log Loss |
+| ~ 404K | Random | `Sim Fs+Adv Fs+TFIDF Weighted W2V` | NA | **0.88** |
+| ~ 404K | Logistic Regression | `Sim Fs+Adv Fs+TFIDF Weighted W2V` | Done | **0.42** |
+| ~ 404K | Linear SVM | `Sim Fs+Adv Fs+TFIDF Weighted W2V` | Done | **0.45** |
+| ~ 404K | XGBoost | `Sim Fs+Adv Fs+TFIDF Weighted W2V` | NA | **0.35** |
+| ~ 100K | XGBoost | `Sim Fs+Adv Fs+TFIDF Weighted W2V` | Done | **0.33** |
+|---------- | ---------- | -------- | ------ | -------- |
+| ~ 202K | Random | `Sim Fs+Adv Fs+TFIDF Simple` | NA | **0.88** |
+| ~ 202K | Logistic Regression | `Sim Fs+Adv Fs+TFIDF Simple` | Done | **0.39** |
+| ~ 202K | Linear SVM | `Sim Fs+Adv Fs+TFIDF Simple` | Done | **0.43** |
+| ~ 202K | XGBoost | `Sim Fs+Adv Fs+TFIDF Simple` | Done | **0.31** |
+|---------- | ---------- | -------- | ------ | -------- |
+| ~ 202K | Random | `Sim Fs+Adv Fs+Word2Vec Features` | NA | **0.88** |
+| ~ 202K | Logistic Regression | `Sim Fs+Adv Fs+Word2Vec Features` | Done | **0.40** |
+| ~ 202K | Linear SVM | `Sim Fs+Adv Fs+Word2Vec Features` | Done | **0.41** |
+| ~ 202K | XGBoost | `Sim Fs+Adv Fs+Word2Vec Features` | Done | **0.33** |
+
+- We can see, as dimension increases (*dim increases with TFIDF Simple*) Logistic Regression and XGB starts to perform well, whereas Linear SVM produces best results with `Sim Fs + Adv Fs + Word2Vec Features`.
+
+## Technical Aspect
+__This project is divided into five part__:
+  1.  I have done EDA, Created Basic Feature set (__FS1__), preprocessing on text data, Created Advanced Feature set using Fuzzy feature (__FS2__), Featuring text data with tf-idf weighted word-vectors (__FS3__), and applying ML Model (*Random Model, Logistic Regression with hyperparameter tuning, and Linear SVM with hyperparameter tuning*) in __first part__.
+  
+  2.  Training XGBoost with hyperparameter tuning using *FS1 + FS2 + FS3* in __second part__.
+  
+  3.  I have created simple TF-IDF Vectorizer (__FS4__) and training ML Model (*Logistic Regression with hyperparameter tuning, Linear SVM with hyperparameter tuning, and XGBoost with hyperparameter tuning*) using *FS1 + FS2 +FS4* in __third part__.
+  
+  4.  I have created Distance Feature and Genism’s WmdSimilarity Features (__FS5__) and training ML Model (*Logistic Regression with hyperparameter tuning, Linear SVM with hyperparameter tuning, and XGBoost with hyperparameter tuning*) using *FS1 + FS2 + FS5* in __fourth part__.
+  
+  5.  Model Comparison and conclusion in __fifth part__.
+  
+## Installation
+The Code is written in Python 3.7. If you don't have Python installed you can find it [here](https://www.python.org/downloads/ "Install Python 3
+.7"). If you are using a lower version of Python you can upgrade using the pip package, ensuring you have the latest version of pip.
+
+
