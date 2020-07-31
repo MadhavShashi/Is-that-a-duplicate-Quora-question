@@ -53,7 +53,7 @@ Suppose we have a fairly large data set of question-pairs that has been labeled 
 ![#FF5733](https://via.placeholder.com/7x24/FF5733/000000?text=+) We build train and test by *randomly splitting* in the ratio of **60:40** or **70:30** whatever we choose as we have sufficient points to work with.
 
 ## Agenda
-
+### ![1](https://user-images.githubusercontent.com/49862149/89004079-07692680-d31f-11ea-9edf-557ad81d299f.PNG)
 ### 1. Analyzing the Data (EDA)
 
 
