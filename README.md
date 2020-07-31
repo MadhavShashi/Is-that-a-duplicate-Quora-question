@@ -53,8 +53,167 @@ Suppose we have a fairly large data set of question-pairs that has been labeled 
 ![#FF5733](https://via.placeholder.com/7x24/FF5733/000000?text=+) We build train and test by *randomly splitting* in the ratio of **60:40** or **70:30** whatever we choose as we have sufficient points to work with.
 
 ## Agenda
-### ![1](https://user-images.githubusercontent.com/49862149/89004079-07692680-d31f-11ea-9edf-557ad81d299f.PNG)
+
 ### 1. Analyzing the Data (EDA)
+- Some Analysis on Train Data Set below:
+- Getting Deep knowledge of Data Set (on question parameter)
+  * Output:
+    * ```(1). Total number of questation pairs for training:- 404290```
+    * ```(2). Questation pairs are not similar (is_duplicate= 0) in percentage:- 63.08%```
+    * ```(3). Questation pairs are similar (is_duplicate= 1) in percentage:- 36.92%```
+  
+  * Plotted above detail’s on graph:
+      ```python
+        df_train.groupby("is_duplicate")["id"].count().plot.bar()
+      ```
+      ![p1](https://user-images.githubusercontent.com/49862149/89006795-1b178b80-d325-11ea-91b7-272c7a7c03ea.png) 
+      
+      We can clearly see this graph and analyze it, positive class (**is_duplicate=0**) has more pair question than negative class (**is_duplicate=1**). We can think this as unbalanced data set.
+- *Now*, Getting Deep knowledge about Number of __unique questions__:
+  
+  * Output:
+    * ```(1). Total number of Unique Questions are: - 537933```
+    * ```(2). Number of unique questions that appear more than one time: - 111780 (20.7%)```
+    * ```(3). Max number of times a single question is repeated:- 157```
+  * Plotting Number of occurrences of each question:
+    ![p2](https://user-images.githubusercontent.com/49862149/89007871-3d120d80-d327-11ea-9b5d-76b6ea5a6871.png)
+    
+    In terms of questions, most questions only appear a few times, with very few questions appearing several times (and a few questions appearing many times). One question appears more than 157 times.
+  
+    
+    
+### 2. Basic Feature Extraction (before cleaning the data)
+- Basic Features - Extracted some simple features before cleaning the data as below.
+  * __freq_qid1__ = Frequency of qid1's
+  * __freq_qid2__ = Frequency of qid2's
+  * __q1len__ = Length of q1
+  * __q2len__ = Length of q2
+  * __q1_n_words__ = Number of words in Question 1
+  * __q2_n_words__ = Number of words in Question 2
+  * __word_Common__ = (Number of common unique words in Question 1 and Question 2)
+  * __word_Total__ = (Total num of words in Question 1 + Total num of words in Question 2)
+  * __word_share__ = (word_common)/(word_Total)
+  * __freq_q1+freq_q2__ = sum total of frequency of qid1 and qid2
+  * __freq_q1-freq_q2__ = absolute difference of frequency of qid1 and qid2
+
+### 3. Advanced Feature Extraction (NLP and Fuzzy Features, after preprocessing the Data)
+- Before creating advanced feature, I did some preprocessing on text data.
+- Function to Compute and get the features: With 2 parameters of Question 1 and Question 2.
+- Before getting deep knowledge about advanced feature we need to understand some terms which helps us to understand advance feature sets below.
+- ![#FF5733](https://via.placeholder.com/7x24/FF5733/000000?text=+)Definition or terms:
+  * __Token__: You get a token by splitting sentence a space
+  * __Stop_Word__ : stop words as per NLTK.
+  * __Word__ : A token that is not a stop_word
+- ![#FF5733](https://via.placeholder.com/7x24/FF5733/000000?text=+)__Features__:
+  * __cwc_min__ : Ratio of common_word_count to min lenghth of word count of Q1 and Q2
+                      
+    ```python
+    cwc_min = common_word_count / (min(len(q1_words), len(q2_words))
+    ```
+  * __cwc_max__ : Ratio of common_word_count to max lenghth of word count of Q1 and Q2
+                      
+    ```python
+    cwc_max = common_word_count / (max(len(q1_words), len(q2_words))
+    ```
+  * __csc_min__ : Ratio of common_stop_count to min lenghth of stop count of Q1 and Q2
+                      
+    ```python
+    csc_min = common_stop_count / (min(len(q1_stops), len(q2_stops))
+    ```
+  * __csc_max__ : Ratio of common_stop_count to max lenghth of stop count of Q1 and Q2
+                      
+    ```python
+    csc_max = common_stop_count / (max(len(q1_stops), len(q2_stops))
+    ```
+  * __ctc_min__ : Ratio of common_token_count to min lenghth of token count of Q1 and Q2
+                      
+    ```python
+    ctc_min = common_token_count / (min(len(q1_tokens), len(q2_tokens))
+    ```
+  * __ctc_max__ : Ratio of common_token_count to max lenghth of token count of Q1 and Q2
+                      
+    ```python
+    ctc_max = common_token_count / (max(len(q1_tokens), len(q2_tokens))
+    ```
+  * __last_word_eq__ : Check if last word of both questions is equal or not
+                      
+    ```python
+    last_word_eq = int(q1_tokens[-1] == q2_tokens[-1])
+    ```
+  * __first_word_eq__ : Check if First word of both questions is equal or not
+                      
+    ```python
+    first_word_eq = int(q1_tokens[0] == q2_tokens[0])
+    ```
+  * __abs_len_diff__ : Abs. length difference
+                      
+    ```python
+    abs_len_diff = abs(len(q1_tokens) - len(q2_tokens))
+    ```
+  * __mean_len__ : Average Token Length of both Questions
+                    
+    ```python
+    mean_len = (len(q1_tokens) + len(q2_tokens))/2
+    ```
+  * __Levenshtein Distance__: Levenshtein Distance measures the difference between two text sequences based on the number of single character edits (*insertions, deletions, and substitutions*) it takes to change one sequence to another. It is also known as “*edit distance*”. The Python library *fuzzy-wuzzy* can be used to compute the following:
+    
+    * __fuzz_ratio__ : This computes the similarity between two word-sequences (in this case, the two questions) using the simple edit distance between them.
+      ```python
+      fuzz.ratio("YANKEES", "NEW YORK YANKEES") ⇒ 60
+      fuzz.ratio("NEW YORK METS", "NEW YORK YANKEES") ⇒ 75
+      ```
+      __Reference__: https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/
+    
+    * __fuzz_partial_ratio__ : This improves on the simple ratio method above using a heuristic called “best partial,” which is useful when the two sequences are of noticeably different lengths. If the shorter sequence is length m, the simple ratio score of the best matching substring of length m is taken into account.
+      ```python
+      fuzz.partial_ratio("YANKEES", "NEW YORK YANKEES") ⇒ 100
+      fuzz.partial_ratio("NEW YORK METS", "NEW YORK YANKEES") ⇒ 69
+      ```
+      __Reference__: https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/
+    
+    * __token_sort_ratio__ : This involves tokenizing each sequence, sorting the tokens alphabetically, and then joining them back. These new sequences are then compared using the simple ratio method.
+      ```python
+      fuzz.token_sort_ratio("New York Mets vs Atlanta Braves", "Atlanta Braves vs New York Mets") ⇒100 
+      ```
+      __Reference__: https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/
+    * __token_set_ratio__ : This involves tokenizing both the sequences and splitting the tokens into three groups: the intersection component common to both sequences and the two remaining components from each sequence. The scores increase when the intersection component makes up a larger percentage of the full sequence. The score also increases with the similarity of the two remaining components.
+      ```python
+      t0 = "angels mariners"
+      t1 = "angels mariners vs"
+      t2 = "angels mariners anaheim angeles at los of seattle"
+      fuzz.ratio(t0, t1) ⇒ 90
+      fuzz.ratio(t0, t2) ⇒ 46
+      fuzz.ratio(t1, t2) ⇒ 50
+      fuzz.token_set_ratio("mariners vs angels", "los angeles angels of anaheim at seattle mariners") ⇒ 90
+      ```
+      __Reference__: https://github.com/seatgeek/fuzzywuzzy#usage http://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/
+
+  * __longest_substr_ratio__ : Ratio of length longest common substring to min lenghth of token count of Q1 and Q2
+    ```python
+    longest_substr_ratio = len(longest common substring) / (min(len(q1_tokens), len(q2_tokens))
+    ```
+
+### 4. Featuring text data with tf-idf weighted word-vectors (With 2 parameters of Question1 and Question2)
+- Extracted Tf-Idf features for this combined question1 and question2 and got features with Train data.
+- After we find TF-IDF scores, we convert each question to a weighted average of word2vec vectors by these scores.
+- here I use a pre-trained GLOVE model which comes free with "Spacy". https://spacy.io/usage/vectors-similarity
+- It is trained on Wikipedia and therefore, it is stronger in terms of word semantics.
+- __Note__: When you are reviewing this part of code, I am sure you will be confuse, why I am directly copy pest the directory of glove pre-trained embedding model in spacy.load function, this is because due to some issue I am unable to call this downloaded file directly. 
+
+### 5. Simple tf-idf Vectorizing the Data (With 2 parameters of Question 1 and Question 2)
+- Performing Simple TF-IDF Tokenization on columns- 'question1', 'question2'.
+  ```python
+  vectorizer= TfidfVectorizer()
+  ques1 = vectorizer.fit_transform(data['question1'].values.astype('U'))
+  ques2 = vectorizer.fit_transform(data['question2'].values.astype('U'))
+  ```
+  
+### 6. Word2Vec Feature: Distance Feature And Genism’s WmdSimilarity Features (To use WMD, we need some word embeddings first of all. Download the GoogleNews-vectors-negative300.bin.gz pre-trained embeddings (warning: 1.5 GB))
+
+
+
+
+
 
 
 
