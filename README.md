@@ -1,4 +1,32 @@
 ![img](https://user-images.githubusercontent.com/49862149/88937413-bff08500-d2a1-11ea-9dce-5a1d21d8a47d.png)
+
+- [**OVERVIEW**]
+- [**MOTIVATION**]
+- [**SOURCES/USEFUL LINKS**]
+- [**PROBLEM STATEMENT**]
+- [**SOLUTION**]
+- [**WHICH TYPE OF ML PROBLEM IS THIS?**]
+- [**WHAT IS THE BEST PERFORMANCE METRIC FOR THIS PROBLEM?**]
+- [**BUSINESS OBJECTIVES AND CONSTRAINTS]
+- [**DATA OVERVIEW**]
+- [**TRAIN AND TEST RATIO**]
+- [**AGENDA**]
+  1.  [*ANALYZING THE DATA (EDA)*]
+  2.  [*BASIC FEATURE EXTRACTION (BEFORE CLEANING THE DATA)*]
+3.	ADVANCED FEATURE EXTRACTION (NLP AND FUZZY FEATURES, AFTER PREPROCESSING THE DATA)
+4.	FEATURING TEXT DATA WITH TF-IDF WEIGHTED WORD-VECTORS (WITH 2 PARAMETERS OF QUESTION 1 AND QUESTION 2)
+5.	SIMPLE TF-IDF VECTORIZING THE DATA (WITH 2 PARAMETERS OF QUESTION 1 AND QUESTION 2)
+6.	WORD2VEC FEATURE: DISTANCE FEATURE AND GENISM’S WMDSIMILARITY FEATURES (TO USE WMD, WE NEED SOME WORD EMBEDDINGS FIRST OF ALL. DOWNLOAD THE GOOGLENEWS-VECTORS-NEGATIVE300.BIN.GZ PRE-TRAINED EMBEDDINGS (WARNING: 1.5 GB))
+7.	MACHINE LEARNING MODELS:
+a.	Random Model
+b.	Logistic Regression
+c.	Linear SVM
+d.	XGBoost
+8.	RESULTS & CONCLUSION
+TECHNICAL ASPECT
+INSTALLATION
+
+
 ## Overview
 <p> Quora is a place to gain and share knowledge—about anything. It’s a platform to ask questions and connect with people who contribute unique insights and quality answers. This empowers people to learn from each other and to better understand the world.<p>
 <p> Over 100 million people visit Quora every month, so it's no surprise that many people ask similarly worded questions. Multiple questions with the same intent can cause seekers to spend more time finding the best answer to their question, and make writers feel they need to answer multiple versions of the same question. Quora values canonical questions because they provide a better experience to active seekers and writers, and offer more value to both of these groups in the long term. <p>
@@ -245,25 +273,24 @@ Suppose we have a fairly large data set of question-pairs that has been labeled 
 
 ### 7. Machine Learning Models:
 #### ![#86b300](https://via.placeholder.com/5x27/86b300/000000?text=+) a.  __Random Model__
-- 
- ![p3](https://user-images.githubusercontent.com/49862149/89040798-efff5d00-d361-11ea-8e00-bc8ab56d98b1.png)
+![p3](https://user-images.githubusercontent.com/49862149/89040798-efff5d00-d361-11ea-8e00-bc8ab56d98b1.png)
     
 #### ![#86b300](https://via.placeholder.com/5x27/86b300/000000?text=+) b.  __Logistic Regression__
-- __Logistic regression__ is a linear model for classification. In this model, the probabilities describing the possible outcomes of a single trial are modeled using a logistic function. The logistic function is a sigmoid function, *which takes any real input and outputs a value between 0 and 1, and hence is ideal for classification*.<p>When a model learns the training data too closely, it fails to fit new data or predict unseen observations reliably. This condition is called overfitting and is countered, in one of many ways, with ridge (L2) regularization. Ridge regularization penalizes model predictors if they are too big, thus enforcing them to be small. This reduces model variance and avoids overfitting.</p> <p>__Hyperparameter Tuning__:</p><p>Cross-validation is a good technique to tune model parameters like regularization factor and the tolerance for stopping criteria (for determining when to stop training). Here, a validation set is held out from the training data for each run (called fold) while the model is trained on the remaining training data and then evaluated on the validation set. This is repeated for the total number of folds (say five or 10) and the parameters from the fold with the best evaluation score are used as the optimum parameters for the model.</p>
+  - __Logistic regression__ is a linear model for classification. In this model, the probabilities describing the possible outcomes of a single trial are modeled using a logistic function. The logistic function is a sigmoid function, *which takes any real input and outputs a value between 0 and 1, and hence is ideal for classification*.<p>When a model learns the training data too closely, it fails to fit new data or predict unseen observations reliably. This condition is called overfitting and is countered, in one of many ways, with ridge (L2) regularization. Ridge regularization penalizes model predictors if they are too big, thus enforcing them to be small. This reduces model variance and avoids overfitting.</p> <p>__Hyperparameter Tuning__:</p><p>Cross-validation is a good technique to tune model parameters like regularization factor and the tolerance for stopping criteria (for determining when to stop training). Here, a validation set is held out from the training data for each run (called fold) while the model is trained on the remaining training data and then evaluated on the validation set. This is repeated for the total number of folds (say five or 10) and the parameters from the fold with the best evaluation score are used as the optimum parameters for the model.</p>
 
 #### ![#86b300](https://via.placeholder.com/5x27/86b300/000000?text=+) c.  __Linear SVM__
-- Linear SVM is the newest extremely fast machine learning (data mining) algorithm for solving multiclass classification problems from ultra large data sets that implements an original proprietary version of a cutting plane algorithm for designing a linear support vector machine. LinearSVM is a linearly scalable routine meaning that it creates an SVM model in a CPU time which scales linearly with the size of the training data set.
-- __Features__
-  * Efficiency in dealing with extra-large data sets (say, several millions training data pairs)
-  * Solution of multiclass classification problems with any number of classes
-  * Working with high dimensional data (thousands of features, attributes) in both sparse and dense format
-  * No need for expensive computing resources (personal computer is a standard platform)
+  - Linear SVM is the newest extremely fast machine learning (data mining) algorithm for solving multiclass classification problems from ultra large data sets that implements an original proprietary version of a cutting plane algorithm for designing a linear support vector machine. LinearSVM is a linearly scalable routine meaning that it creates an SVM model in a CPU time which scales linearly with the size of the training data set.
+  - __Features__
+    * Efficiency in dealing with extra-large data sets (say, several millions training data pairs)
+    * Solution of multiclass classification problems with any number of classes
+    * Working with high dimensional data (thousands of features, attributes) in both sparse and dense format
+    * No need for expensive computing resources (personal computer is a standard platform)
 
 #### ![#86b300](https://via.placeholder.com/5x27/86b300/000000?text=+) d.  __XGBoost__
-- Stands for eXtreme Gradient Boosting. Gradient boosting is an approach that predicts the errors made by existing models and adds models until no improvements can be made.
-- There are two main reasons for using XGBoost:
-  * Execution speed
-  * Model performance
+  - Stands for __eXtreme Gradient Boosting__. Gradient boosting is an approach that predicts the errors made by existing models and adds models until no improvements can be made.
+  - There are *two* main reasons for using XGBoost:
+    * __Execution speed__
+    * __Model performance__
   
 ### 8. Results & Conclusion
 - For below table we are comparing all the ML model test log-loss score.
