@@ -2,7 +2,7 @@
 
 ## Table of Content
 
-- [**OVERVIEW**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#overview)
+- [**OVERVIEW**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#overview )
 - [**MOTIVATION**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#motivation)
 - [**SOURCES/USEFUL LINKS**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#sourcesuseful-links)
 - [**PROBLEM STATEMENT**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#problem-statement)
