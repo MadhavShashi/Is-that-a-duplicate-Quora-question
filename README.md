@@ -7,24 +7,25 @@
 - [**SOLUTION**]
 - [**WHICH TYPE OF ML PROBLEM IS THIS?**]
 - [**WHAT IS THE BEST PERFORMANCE METRIC FOR THIS PROBLEM?**]
-- [**BUSINESS OBJECTIVES AND CONSTRAINTS]
+- [**BUSINESS OBJECTIVES AND CONSTRAINTS**]
 - [**DATA OVERVIEW**]
 - [**TRAIN AND TEST RATIO**]
 - [**AGENDA**]
   1.  [*ANALYZING THE DATA (EDA)*]
   2.  [*BASIC FEATURE EXTRACTION (BEFORE CLEANING THE DATA)*]
-3.	ADVANCED FEATURE EXTRACTION (NLP AND FUZZY FEATURES, AFTER PREPROCESSING THE DATA)
-4.	FEATURING TEXT DATA WITH TF-IDF WEIGHTED WORD-VECTORS (WITH 2 PARAMETERS OF QUESTION 1 AND QUESTION 2)
-5.	SIMPLE TF-IDF VECTORIZING THE DATA (WITH 2 PARAMETERS OF QUESTION 1 AND QUESTION 2)
-6.	WORD2VEC FEATURE: DISTANCE FEATURE AND GENISM’S WMDSIMILARITY FEATURES (TO USE WMD, WE NEED SOME WORD EMBEDDINGS FIRST OF ALL. DOWNLOAD THE GOOGLENEWS-VECTORS-NEGATIVE300.BIN.GZ PRE-TRAINED EMBEDDINGS (WARNING: 1.5 GB))
-7.	MACHINE LEARNING MODELS:
-a.	Random Model
-b.	Logistic Regression
-c.	Linear SVM
-d.	XGBoost
-8.	RESULTS & CONCLUSION
-TECHNICAL ASPECT
-INSTALLATION
+  3.	[*ADVANCED FEATURE EXTRACTION (NLP AND FUZZY FEATURES, AFTER PREPROCESSING THE DATA)*]
+  4.	[*FEATURING TEXT DATA WITH TF-IDF WEIGHTED WORD-VECTORS (WITH 2 PARAMETERS OF QUESTION 1 AND QUESTION 2)*]
+  5.	[*SIMPLE TF-IDF VECTORIZING THE DATA (WITH 2 PARAMETERS OF QUESTION 1 AND QUESTION 2)*]
+  6.	[*WORD2VEC FEATURE: DISTANCE FEATURE AND GENISM’S WMDSIMILARITY FEATURES (TO USE WMD, WE NEED SOME WORD EMBEDDINGS FIRST OF ALL. DOWNLOAD THE GOOGLENEWS-VECTORS-NEGATIVE300.BIN.GZ PRE-TRAINED EMBEDDINGS (WARNING: 1.5 GB))*]
+  7.	[*MACHINE LEARNING MODELS:*]
+      
+        * a. [**Random Model**]
+        * b. [**Logistic Regression**]
+        * c. [**Linear SVM**]
+        * d. [**XGBoost**]
+  8.	[*RESULTS & CONCLUSION*]
+- [**TECHNICAL ASPECT**]
+- [**INSTALLATION**]
 
 
 ## Overview
@@ -330,7 +331,27 @@ __This project is divided into five part__:
   5.  Model Comparison and conclusion in __fifth part__.
   
 ## Installation
-The Code is written in Python 3.7. If you don't have Python installed you can find it [here](https://www.python.org/downloads/ "Install Python 3
+The Code is written in Python 3.7. If you don't have Python installed you can find it [**here**](https://www.python.org/downloads/ "Install Python 3
 .7"). If you are using a lower version of Python you can upgrade using the pip package, ensuring you have the latest version of pip.
+
+- all the code for the article is available with this __REPOSITORIES__..
+
+  *How To*
+  
+  1.  Install Required Libraries
+      ```python
+      pip3 install pandas
+      pip3 install numpy
+      pip3 install scikit-learn
+      pip3 install nltk
+      pip3 install tqdm
+      pip3 install pyemd
+      pip3 install fuzzywuzzy
+      pip3 install python-levenshtein
+      pip3 install --upgrade gensim
+      ```
+  2.  Download Required Language libraries
+      
+      `wget https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz`
 
 
