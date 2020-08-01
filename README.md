@@ -1,5 +1,7 @@
 ![img](https://user-images.githubusercontent.com/49862149/88937413-bff08500-d2a1-11ea-9dce-5a1d21d8a47d.png)
 
+## Table of Content
+
 - [**OVERVIEW**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#overview)
 - [**MOTIVATION**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#motivation)
 - [**SOURCES/USEFUL LINKS**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#sourcesuseful-links)
