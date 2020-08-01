@@ -1,31 +1,31 @@
 ![img](https://user-images.githubusercontent.com/49862149/88937413-bff08500-d2a1-11ea-9dce-5a1d21d8a47d.png)
 
-- [**OVERVIEW**]
-- [**MOTIVATION**]
-- [**SOURCES/USEFUL LINKS**]
-- [**PROBLEM STATEMENT**]
-- [**SOLUTION**]
-- [**WHICH TYPE OF ML PROBLEM IS THIS?**]
-- [**WHAT IS THE BEST PERFORMANCE METRIC FOR THIS PROBLEM?**]
-- [**BUSINESS OBJECTIVES AND CONSTRAINTS**]
-- [**DATA OVERVIEW**]
-- [**TRAIN AND TEST RATIO**]
-- [**AGENDA**]
-  1.  [*ANALYZING THE DATA (EDA)*]
-  2.  [*BASIC FEATURE EXTRACTION (BEFORE CLEANING THE DATA)*]
-  3.	[*ADVANCED FEATURE EXTRACTION (NLP AND FUZZY FEATURES, AFTER PREPROCESSING THE DATA)*]
-  4.	[*FEATURING TEXT DATA WITH TF-IDF WEIGHTED WORD-VECTORS (WITH 2 PARAMETERS OF QUESTION 1 AND QUESTION 2)*]
-  5.	[*SIMPLE TF-IDF VECTORIZING THE DATA (WITH 2 PARAMETERS OF QUESTION 1 AND QUESTION 2)*]
-  6.	[*WORD2VEC FEATURE: DISTANCE FEATURE AND GENISM’S WMDSIMILARITY FEATURES (TO USE WMD, WE NEED SOME WORD EMBEDDINGS FIRST OF ALL. DOWNLOAD THE GOOGLENEWS-VECTORS-NEGATIVE300.BIN.GZ PRE-TRAINED EMBEDDINGS (WARNING: 1.5 GB))*]
-  7.	[*MACHINE LEARNING MODELS:*]
+- [**OVERVIEW**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#overview)
+- [**MOTIVATION**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#motivation)
+- [**SOURCES/USEFUL LINKS**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#sourcesuseful-links)
+- [**PROBLEM STATEMENT**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#problem-statement)
+- [**SOLUTION**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#solution)
+- [**WHICH TYPE OF ML PROBLEM IS THIS?**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#which-type-of-ml-problem-is-this)
+- [**WHAT IS THE BEST PERFORMANCE METRIC FOR THIS PROBLEM?**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#what-is-the-best-performance-metric-for-this-problem)
+- [**BUSINESS OBJECTIVES AND CONSTRAINTS**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#business-objectives-and-constraints)
+- [**DATA OVERVIEW**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#data-overview)
+- [**TRAIN AND TEST RATIO**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#train-and-test-ratio)
+- [**AGENDA**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#agenda)
+  1.  [*ANALYZING THE DATA (EDA)*](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#1-analyzing-the-data-eda)
+  2.  [*BASIC FEATURE EXTRACTION (BEFORE CLEANING THE DATA)*](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#2-basic-feature-extraction-before-cleaning-the-data)
+  3.	[*ADVANCED FEATURE EXTRACTION (NLP AND FUZZY FEATURES, AFTER PREPROCESSING THE DATA)*](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#3-advanced-feature-extraction-nlp-and-fuzzy-features-after-preprocessing-the-data)
+  4.	[*FEATURING TEXT DATA WITH TF-IDF WEIGHTED WORD-VECTORS (WITH 2 PARAMETERS OF QUESTION 1 AND QUESTION 2)*](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#4-featuring-text-data-with-tf-idf-weighted-word-vectors-with-2-parameters-of-question1-and-question2)
+  5.	[*SIMPLE TF-IDF VECTORIZING THE DATA (WITH 2 PARAMETERS OF QUESTION 1 AND QUESTION 2)*](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#5-simple-tf-idf-vectorizing-the-data-with-2-parameters-of-question-1-and-question-2)
+  6.	[*WORD2VEC FEATURE: DISTANCE FEATURE AND GENISM’S WMDSIMILARITY FEATURES (TO USE WMD, WE NEED SOME WORD EMBEDDINGS FIRST OF ALL. DOWNLOAD THE GOOGLENEWS-VECTORS-NEGATIVE300.BIN.GZ PRE-TRAINED EMBEDDINGS (WARNING: 1.5 GB))*](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#6-word2vec-feature-distance-feature-and-genisms-wmdsimilarity-features-to-use-wmd-we-need-some-word-embeddings-first-of-all-download-the-googlenews-vectors-negative300bingz-pre-trained-embeddings-warning-15-gb)
+  7.	[*MACHINE LEARNING MODELS:*](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#7-machine-learning-models)
       
-        * a. [**Random Model**]
-        * b. [**Logistic Regression**]
-        * c. [**Linear SVM**]
-        * d. [**XGBoost**]
-  8.	[*RESULTS & CONCLUSION*]
-- [**TECHNICAL ASPECT**]
-- [**INSTALLATION**]
+        * a. [**Random Model**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#-a--random-model)
+        * b. [**Logistic Regression**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#-b--logistic-regression)
+        * c. [**Linear SVM**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#-c--linear-svm)
+        * d. [**XGBoost**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#-d--xgboost)
+  8.	[*RESULTS & CONCLUSION*](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#8-results--conclusion)
+- [**TECHNICAL ASPECT**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#technical-aspect)
+- [**INSTALLATION**](https://github.com/MadhavShashi/Is-that-a-duplicate-Quora-question/blob/master/README.md#installation)
 
 
 ## Overview
